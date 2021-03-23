@@ -1,0 +1,58 @@
+<!-- TODO: Tidy up this file and make it look good -->
+<!-- TODO: Remove hard coded text to a locale file -->
+<html>
+<head>
+<style>
+body {
+  /* Set "my-sec-counter" to 0 */
+  counter-reset: my-sec-counter;
+}
+
+#table-header::before {
+  /* Increment "my-sec-counter" by 1 */
+  counter-increment: my-sec-counter;
+  content: counter(my-sec-counter) ". ";
+}
+</style>
+</head>
+
+<body>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Email</th>
+      <th scope="col">Change Access</th>
+    </tr>
+  </thead>
+
+<% if has_role? :admin %>
+	<% @users.each do |user| %>
+		  <tbody>
+		    <tr>
+		      <th scope="row" id="table-header"></th>
+		      <td><%=user.first_name%></td>
+		      <td><%=user.email%></td>
+		      <td><%= link_to "Edit", edit_user_path(user) %></td><br>
+		    </tr>		    
+		  </tbody>
+	<%end%>
+<%end%>
+</table>
+
+
+
+
+
+<%# if has_role? :admin %>
+    <!-- <div class="container text-center"> -->
+        <%# @users.each do |user| %>
+          <!-- <p> -->
+            <%#= link_to "<#{user.email}>", user %>
+            <%#= link_to "edit", edit_user_path(user) %>
+          <!-- </p> -->
+        <%# end %>
+    <!-- </div> -->
+<%#end%>
+</body>

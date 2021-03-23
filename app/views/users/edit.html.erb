@@ -1,0 +1,16 @@
+<!-- TODO: Tidy up this file and make it look good -->
+<!-- TODO: Remove hard coded text to a locale file -->
+
+<p>
+ Email address: <%= @user.email %>
+</p>
+
+<%= form_for @user do |f| %>
+  <% Role.all.each do |role| %>
+    <%= check_box_tag "user[role_ids][]", role.id, @user.role_ids.include?(role.id) %>
+    <%= role.name %></br>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back", users_path %>

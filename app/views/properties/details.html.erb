@@ -1,0 +1,75 @@
+          
+<div class=" col-md-12 row">
+  
+    <div class="col-md-6">
+
+
+        <div class="container">
+          <center>
+            <div id="formContent">
+              <center>
+                <%# <div style="width:250px;"> %>
+                <h2>Property Details</h2> 
+                <br>
+                <table>
+                  
+                  <tr>
+                    <th>Address</th>
+                    <td><%= @property.address %></td>      
+                  </tr>
+                  <tr>
+                    <th>Rooms</th>
+                    <td><%= @property.rooms %></td>
+                  </tr>
+                  <tr>
+                    <th>Bathrooms</th>
+                    <td><%= @property.bathrooms %></td>      
+                  </tr>
+                  <tr>
+                    <th>Available_date</th>
+                    <td><%= @property.available_date %></td>
+                  </tr>
+                  <tr>
+                    <th>Dimentions</th>
+                    <td><%= @property.dimentions %></td>
+                  </tr>
+                  <tr>
+                    <th>summary</th>
+                    <td><%= @property.summary %></td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <td><%= @property.price %></td>
+                  </tr>
+                  <tr>
+                    <th>Features</th>
+                    <td><%= @property.features %></td>
+                  </tr>
+                  <tr>
+                    <th>Direction</th>
+                    <td><%= @property.direction %></td>
+                  </tr>
+                </table>
+                <br>
+                
+                
+                  
+                <br><br><br>
+              </center>
+            </div>
+          </center>
+      </div>
+    </div>
+    <div class="col-md-6 row">
+      <% (0...@property.images.count).each do |image|%>
+                    <div class="d-flex flex-row bd-highlight mb-3 col-md-6" style="width: 300px; height: 300px">
+                        <%= image_tag(@property.images[image], style: 'width:100%; height:100%')%>
+                    </div>
+                      
+                          
+                      <%end%>
+    </div>
+
+
+
+</div>

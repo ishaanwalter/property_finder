@@ -1,0 +1,74 @@
+<%#= form_for  @property, url: user_properties_path(user_id: current_user.id) do |form| %>
+  <%= form_with model: [current_user, @property] do |form| %>
+  
+    <div class="container h3 font-weight-normal text-center " style="width: 50%">
+
+      
+      
+
+
+      
+        <div class="field">
+          <%= form.label :images%>
+          <%= form.file_field :images, multiple: true%>
+      
+
+
+
+      <div class="field form-check">
+        <% form.label :title %><br />
+        <%= form.text_field :title, class:"form-control", placeholder:"Title" , autofocus: true, autocomplete: "title" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :summary %><br />
+        <%= form.text_field :summary, class:"form-control", placeholder:"Summary" , autocomplete: "summary" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :price %><br />
+        <%= form.text_field :price, class:"form-control", placeholder:"Price" , autocomplete: "price" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :rooms %><br />
+        <%= form.text_field :rooms, class:"form-control", placeholder:"Rooms" , autocomplete: "rooms" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :bathrooms %><br />
+        <%= form.text_field :bathrooms, class:"form-control", placeholder:"Bathrooms" , autocomplete: "bathrooms" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :available_date %><br />
+        <%= form.date_field :available_date, class:"form-control", placeholder:"Available_Date" , autocomplete: "available_date" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :dimentions %><br />
+        <%= form.text_field :dimentions, class:"form-control", placeholder:"Dimentions" , autocomplete: "dimentions" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :address %><br />
+        <%= form.text_field :address, class:"form-control", placeholder:"Address" , autocomplete: "address" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :features %><br />
+        <%= form.text_field :features, class:"form-control", placeholder:"Features" , autocomplete: "features" %>
+      </div>
+
+      <div class="field form-check">
+        <% form.label :direction %><br />
+        <%= form.text_field :direction, class:"form-control", placeholder:"Facing?" , autocomplete: "direction" %>
+      </div>
+
+      
+    <div class = "mt-4">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  
+  <%end%>
+<%#end%>

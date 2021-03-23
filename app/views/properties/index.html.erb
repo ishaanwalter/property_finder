@@ -1,0 +1,49 @@
+
+
+
+
+<%if user_signed_in?%>
+    <div class="container-fluid">
+      <div class="row">
+    <%if has_role?(:broker)%>
+      <% @properties.each do |property| %>
+        <% if(current_user.id == property.user_id) %>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          
+          <div class="col">
+              <div class="card h-100" style="width: 18rem;">
+                
+                <div class="card-body">
+                    <div class="card" >
+                      
+                      
+                        <img class="card-img-top" <% if property.images.attached? %> src="<%=(url_for(property.images[0]))%>" height = "250">
+                        <%end%>
+                      
+                          
+                      
+
+                  <h5 class="card-title"><%= property.title %></h5>
+                  <p class="card-text">
+                    <b> Address: </b> <%= property.address %> 
+                    <br><b> Price: Rs </b> <%= property.price %>
+                    <br><b> Rooms: </b> <%= property.rooms %>
+                    <br><b> Bathrooms: </b> <%= property.bathrooms %>
+                    <br><b> Dimentions: </b> <%= property.dimentions %>
+                    <br><b> Facing: </b> <%= property.direction %>
+                    <br><b> Available Date: </b> <%= property.available_date %>
+                  </p>
+                </div>
+                <b class="btn btn-primary btn-md float-right"><%= link_to "Manage", user_property_path(current_user.id, property.id), style:"color:white;" %></b></b>
+                <%end%>
+              </div>
+          </div>
+        </div>
+          
+        
+        <% end %>
+      <%end%>
+    <%end%>
+    </div>
+

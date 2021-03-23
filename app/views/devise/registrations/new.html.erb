@@ -1,0 +1,75 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+  <label class="btn btn-primary">
+  Profile picture!
+    <span style="display:none;">
+      
+      <%=f.file_field :profile_picture %>
+    </span>
+  </label>
+  
+
+  <div class="field form-check">
+    <% f.label :email %><br />
+    <%= f.email_field :email, class:"form-control", placeholder:"Email" , autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field form-check">
+    <% f.label :first_name %><br />
+    <%= f.text_field :first_name, class:"form-control", placeholder:"First Name" , autocomplete: "first_name" %>
+  </div>
+
+  <div class="field form-check">
+    <% f.label :last_name %><br />
+    <%= f.text_field :last_name, class:"form-control", placeholder:"Last Name" , autocomplete: "last_name" %>
+  </div>
+
+  <div class="field form-check">
+    <% f.label :mobile %><br />
+    <%= f.text_field :mobile, class:"form-control", placeholder:"Mobile Number" ,autocomplete: "mobile" %>
+  </div>
+  <div class="field form-check">
+    <% f.label :city %><br />
+    <%= f.text_field :city, class:"form-control", placeholder:"City" ,  autocomplete: "city" %>
+  </div>
+  <div class="field form-check">
+    <% f.label :country %><br />
+    <%= f.text_field :country, class:"form-control", placeholder:"Country" , autocomplete: "country" %>
+  </div>
+  
+  <div class="field form-check">
+    <% f.label :license_no %><br />
+    <%= f.text_field :license_no, class:"form-control", placeholder:"License No" ,  autocomplete: "License No" %>
+  </div>
+
+
+  <div class="field form-check">
+    <% f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, class:"form-control", placeholder:"Password" , autocomplete: "new-password" %>
+  </div>
+
+  <div class="field form-check">
+    <% f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation , class:"form-control", placeholder:"Confirm Password" , autocomplete: "new-password" %>
+  </div>
+  <br/>
+
+  <div class="actions">
+
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+<br/>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>

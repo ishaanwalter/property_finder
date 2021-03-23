@@ -1,0 +1,38 @@
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center" style="width: 20rem;">
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <h2 class="h3 mb-3 font-weight-normal text-center">Log in</h2>
+
+      <div class="field form-check">
+          <% f.label :email %><br />
+          <%= f.email_field :email, class:"form-control", placeholder:"Email" , autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field form-check">
+            <% f.label :password %><br />
+            <%= f.password_field :password,class:"form-control",placeholder:"password" , autocomplete: "current-password" %>
+      </div>
+      <br>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field form-group">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class:"btn btn-secondary" %>
+      </div>
+    <% end %>
+    <br>
+
+    <%= render "devise/shared/links" %>
+    <p class="mt-5 mb-3 text-muted">© 2021 -2022</p>
+
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="d-flex justify-content-center">
+<div class="card text-white bg-secondary mb-3"  style="max-width: 18rem;">
+
+<%#byebug%>
+<%#@properties = @user.properties.itself%>
+<%#= @properties.address%>
+  <div class="card-header", style="color:#FFDEAD;"><h3> <%=@user.first_name%> <%=@user.last_name%>  </h3></div>
+  <div class="card-body">
+  	<img class="card-img-top" <% if @user.profile_picture.attached? %>
+                      <img src="<%=(url_for(@user.profile_picture))%>" >
+                      <%else%>
+                      <%= image_tag("default.jpeg") %>
+                  <%end%>
+    <h5 class="card-title font-italic ", style="color:#FFDEAD"; ><b>Mobile no: </b><%=@user.mobile%></h5>
+    <h5 class="card-title font-oblique", style="color:#FFDEAD";><b>License no: </b><%=@user.license_no%></h5>
+    <h5 class="card-title",  style="color:#FFDEAD;"><b>City: </b><%=@user.city%></h5>
+
+    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+  </div>
+</div>
+</div>

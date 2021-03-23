@@ -1,0 +1,96 @@
+
+
+
+
+
+<%if user_signed_in?%>
+    <div class="container-fluid">
+      <div class="row">
+    <%if has_role?(:broker)%>
+      <% @properties.each do |property| %>
+        <% if(current_user.id == property.user_id) %>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          
+        	<div class="col">
+              <div class="card h-100" style="width: 18rem;">
+                
+                <div class="card-body">
+                    <div class="card" >
+                      
+                      
+                        <img class="card-img-top" <% if property.images.attached? %> src="<%=(url_for(property.images[0]))%>" height = "250">
+                        <%end%>
+                      
+                          
+                      
+
+                  <h5 class="card-title"><%= property.title %></h5>
+                  <p class="card-text">
+                    <b> Address: </b> <%= property.address %> 
+                    <br><b> Price: Rs </b> <%= property.price %>
+                    <br><b> Rooms: </b> <%= property.rooms %>
+                    <br><b> Bathrooms: </b> <%= property.bathrooms %>
+                    <br><b> Dimentions: </b> <%= property.dimentions %>
+                    <br><b> Facing: </b> <%= property.direction %>
+                    <br><b> Available Date: </b> <%= property.available_date %>
+                  </p>
+                </div>
+                <% if has_role?(:broker) && (current_user.id == property.user_id) %>
+                  <b class="btn btn-primary btn-md float-right"><%= link_to "Manage", user_property_path(current_user.id, property.id), style:"color:white;" %></b>
+                <%end%>
+              </div>
+          </div>
+        </div>
+          
+        
+        <% end %>
+      <%end%>
+    <%end%>
+    </div>
+
+
+<%else%>
+  <div class="container-fluid ">
+
+  <%#if has_role?(:broker)%>
+  <div class="row">
+
+    
+    <% @properties.each do |property| %>
+      <%# if(current_user.id == property.user_id) %>
+    <div class="col-md-3 mb-3">
+      <div class="card" style="width: 18rem;">
+                  
+                  <img class="card-img-top" <% if property.images.attached? %> src="<%=(url_for(property.images[0]))%>" height = "250">
+                  <%end%>
+      <div class="card-body">
+          <h5 class="card-title"><%= property.title %></h5>
+          <p class="card-text"><%= property.summary %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Rs:</b> <%= property.price %></li>
+          <li class="list-group-item"><b>Rooms: </b><%= property.rooms %></li>
+          <li class="list-group-item"><b>Bathrooms: </b><%= property.bathrooms %></li>
+          <li class="list-group-item"><b>Dimentions: </b><%= property.dimentions %></li>
+           <li class="list-group-item"><b>Available Date: </b><%= property.available_date %></li>
+          <li class="list-group-item"><b>Facing: </b><%= property.direction %></li>
+
+      </ul>
+      <div class="card-body">
+        <a class="card-link"><%= link_to "More Details", property_path(property.id) %></a>
+        <a  class="card-link"><%= link_to 'Add user', front_new_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div></a>
+      </div>
+     </div>
+    </div>
+      <%# end %>
+    <%end%>
+  <%#end%>
+</div>
+</div>
+<%end%>

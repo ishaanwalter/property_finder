@@ -1,0 +1,38 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" style="color: #cc6699"  >
+  
+  Property Finder</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to( "LogOut",destroy_user_session_path, :method => :delete, :class => "nav-link my-nav-bar", :style => "color: red") %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to("Edit", edit_user_registration_path,:class => "nav-link my-nav-bar",style:"color:white;") %>
+        </li>        
+      <% elsif !user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to("Login", new_user_session_path,:class => "nav-link my-nav-bar",style:"color:white;") %>
+        </li>
+      <% end %>
+        <li class="nav-item active">
+          <% if has_role?(:admin) %>
+            <%= link_to("Register a new Broker", users_path(current_user.id),:class => "nav-link my-nav-bar",style:"color:white;")  %>
+          <% end %>
+        </li>
+
+        <li class="nav-item active">
+          <%  if has_role?(:broker)  %>
+
+            <%= link_to("Add Property",new_user_property_path(current_user.id),:class => "nav-link my-nav-bar",style:"color:white;")  %>
+          <% end %>
+        </li>
+    </ul>
+  </div>
+</nav>
