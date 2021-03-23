@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   resources :brokers
   resources :users do
-    resources :properties 
+    resources :properties
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
