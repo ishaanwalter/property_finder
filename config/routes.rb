@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   # get 'front/greeting'
   root "front#greeting"
   get 'front/new', to: 'front#new'

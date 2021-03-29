@@ -15,6 +15,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        # Tell the UserMailer to send a welcome email after save
+        # UserMailer.with(user: @user).welcome_email.deliver_later
+        UserMailer.welcome_email(@user).deliver
         # TODO: Move hardcode flash message into language file
         format.html { redirect_to @user, notice: 'User was successfully updated.'}
         format.json { render :show, status: :ok, location: @user }
